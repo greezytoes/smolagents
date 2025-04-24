@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Default light mode colors */
+    --color-background-primary: 249 250 251; /* gray-50 */
+    --color-background-secondary: 243 244 246; /* gray-100 */
+    --color-background-surface: 255 255 255; /* white */
+    --color-text-primary: 17 24 39; /* gray-900 */
+    --color-text-secondary: 107 114 128; /* gray-500 */
+    --color-border: 229 231 235; /* gray-200 */
+    
+    /* Accent Colors - light mode */
+    --color-accent-blue: 99 102 241; /* indigo-500 */
+    --color-accent-purple: 139 92 246; /* violet-500 */
+    --color-accent-green: 16 185 129; /* emerald-500 */
+    --color-accent-amber: 245 158 11; /* amber-500 */
+    --color-accent-red: 239 68 68; /* red-500 */
+  }
+  
+  .dark {
+    /* Dark mode colors */
+    --color-background-primary: 15 23 42; /* slate-900 */
+    --color-background-secondary: 30 41 59; /* slate-800 */
+    --color-background-surface: 51 65 85; /* slate-700 */
+    --color-text-primary: 248 250 252; /* slate-50 */
+    --color-text-secondary: 148 163 184; /* slate-400 */
+    --color-border: 71 85 105; /* slate-600 */
+    
+    /* Accent Colors - dark mode (with increased saturation for glow) */
+    --color-accent-blue: 99 102 241; /* indigo-500 */
+    --color-accent-purple: 139 92 246; /* violet-500 */
+    --color-accent-green: 16 185 129; /* emerald-500 */
+    --color-accent-amber: 245 158 11; /* amber-500 */
+    --color-accent-red: 239 68 68; /* red-500 */
+  }
+  
+  /* Global styles */
+  body {
+    @apply bg-background-primary text-text-primary transition-colors duration-200;
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* ============= Button Styles ============= */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 
+           relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 
+           active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply bg-accent-blue text-white shadow-glow-blue hover:shadow-none 
+           dark:bg-accent-blue/90 dark:hover:bg-accent-blue;
+  }
+  
+  .btn-secondary {
+    @apply dark:bg-background-secondary dark:hover:bg-background-secondary/80 dark:text-text-primary
+           bg-gray-100 hover:bg-gray-200 text-gray-800;
+  }
+  
+  .btn-ghost {
+    @apply dark:bg-transparent dark:hover:bg-background-secondary/50 dark:text-text-secondary dark:hover:text-text-primary
+           bg-transparent hover:bg-gray-100 text-gray-700 hover:text-gray-900
+           shadow-none;
+  }
+  
+  .btn-accent-blue {
+    @apply bg-accent-blue text-white shadow-glow-blue hover:shadow-none;
+  }
+  
+  .btn-accent-purple {
+    @apply bg-accent-purple text-white shadow-glow-purple hover:shadow-none;
+  }
+  
+  .btn-accent-green {
+    @apply bg-accent-green text-white shadow-glow-green hover:shadow-none;
+  }
+  
+  .btn-danger {
+    @apply bg-accent-red text-white shadow-glow-red hover:shadow-none;
+  }
+  
+  /* ============= Card Styles ============= */
+  .card {
+    @apply rounded-xl overflow-hidden transition-all duration-200;
+  }
+  
+  .card-glass {
+    @apply bg-glass-light dark:bg-glass-dark backdrop-blur border 
+           border-white/20 dark:border-white/5;
+  }
+  
+  .card-neu {
+    @apply bg-background-surface dark:shadow-neu-normal shadow-neu-light;
+  }
+  
+  /* ============= Input & Control Styles ============= */
+  .input {
+    @apply px-3 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-accent-blue/50
+           bg-background-surface/80 backdrop-blur-sm
+           dark:bg-background-secondary/50 dark:border-border
+           transition-all duration-200;
+  }
+  
+  .checkbox {
+    @apply w-5 h-5 rounded border-2 focus:ring-2 focus:ring-offset-2 focus:ring-accent-blue/50
+           text-accent-blue border-gray-300 dark:border-border
+           transition-colors duration-200;
+  }
+  
+  /* ============= Glassmorphic Effects ============= */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  /* ============= Neomorphic Shadows ============= */
+  .shadow-neu-button {
+    @apply dark:shadow-neu-normal shadow-neu-light hover:shadow-none transition-all duration-200;
+  }
+  
+  .shadow-neu-button-pressed {
+    @apply dark:shadow-neu-pressed dark:hover:shadow-neu-normal
+           shadow-neu-light-pressed hover:shadow-neu-light
+           transition-all duration-150;
+  }
+  
+  /* ============= Glow Effects ============= */
+  .glow-text-blue {
+    @apply text-accent-blue;
+    text-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+  }
+  
+  .glow-text-purple {
+    @apply text-accent-purple;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+  }
+  
+  .glow-text-green {
+    @apply text-accent-green;
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  }
+  
+  .glow-text-amber {
+    @apply text-accent-amber;
+    text-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+  }
+  
+  .glow-text-red {
+    @apply text-accent-red;
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+  }
+  
+  /* ============= Animation Utilities ============= */
+  .transition-gpu {
+    @apply transition-all;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  .animate-glow-pulse {
+    animation: glow-pulse 2s infinite ease-in-out;
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 4px currentColor);
+    }
+    50% {
+      filter: drop-shadow(0 0 10px currentColor);
+    }
+  }
+  
+  /* ============= Custom animations ============= */
+  @keyframes animated-dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  .animated-dash {
+    stroke-dasharray: 10;
+    stroke-dashoffset: 20;
+    animation: animated-dash 1.5s linear infinite;
+  }
+  
+  /* ============= ReactFlow Custom Styles ============= */
+  .workflow-dark {
+    @apply bg-background-primary;
+  }
+  
+  .workflow-light {
+    @apply bg-gray-50;
+  }
+  
+  .controls-dark button {
+    @apply bg-background-secondary text-text-secondary 
+           hover:bg-background-surface hover:text-text-primary
+           border border-border;
+  }
+  
+  .controls-light button {
+    @apply bg-white text-gray-500 
+           hover:bg-gray-50 hover:text-gray-700
+           border border-gray-200;
+  }
+  
+  .minimap-dark {
+    @apply rounded-md overflow-hidden border border-border bg-background-secondary/80 backdrop-blur-sm;
+  }
+  
+  .minimap-light {
+    @apply rounded-md overflow-hidden border border-gray-200 bg-white/80 backdrop-blur-sm;
+  }
+  
+  /* Custom node toolbar button */
+  .node-toolbar-btn {
+    @apply w-8 h-8 rounded-full flex items-center justify-center 
+           transition-all duration-200 hover:scale-110
+           dark:bg-background-surface dark:hover:bg-background-surface/80
+           bg-white hover:bg-gray-50
+           shadow-sm hover:shadow-md;
+  }
+  
+  /* ============= Utility classes ============= */
+  .fill-accent-glow {
+    filter: drop-shadow(0 0 3px currentColor);
+  }
+  
+  .stroke-accent-glow {
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+  
+  .bg-dark-gradient {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 1));
+  }
+  
+  .bg-glow-accent {
+    position: relative;
+  }
+  
+  .bg-glow-accent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, var(--glow-color, rgba(99, 102, 241, 0.3)), transparent 70%);
+    opacity: 0.6;
+    z-index: -1;
+    pointer-events: none;
+  }
+}

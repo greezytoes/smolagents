@@ -1,0 +1,298 @@
+/* 
+ * Workflow Editor Styles
+ * Features:
+ * - Dark theme with neon accents
+ * - Neomorphic and glassmorphic UI elements
+ * - Fluid animations and transitions
+ * - Custom ReactFlow overrides
+ */
+
+/* Base Workflow Container */
+.workflow-editor {
+  --neu-shadow-dark: 5px 5px 10px rgba(0, 0, 0, 0.2), 
+                    -5px -5px 10px rgba(40, 50, 60, 0.05);
+  --neu-shadow-light: 5px 5px 10px rgba(160, 170, 190, 0.1), 
+                     -5px -5px 10px rgba(255, 255, 255, 0.8);
+  --neu-inset-dark: inset 3px 3px 6px rgba(0, 0, 0, 0.2), 
+                   inset -3px -3px 6px rgba(40, 50, 60, 0.05);
+  --neu-inset-light: inset 3px 3px 6px rgba(160, 170, 190, 0.1), 
+                    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+  --glass-bg-dark: rgba(20, 30, 40, 0.7);
+  --glass-bg-light: rgba(255, 255, 255, 0.7);
+  --glass-border-dark: rgba(60, 70, 80, 0.3);
+  --glass-border-light: rgba(255, 255, 255, 0.5);
+  --accent-glow: 0 0 10px rgba(99, 102, 241, 0.6);
+  --accent-glow-intense: 0 0 20px rgba(99, 102, 241, 0.8);
+}
+
+/* Custom ReactFlow Styles */
+.workflow-dark {
+  @apply bg-background-dark;
+  --bg-color: #111827;
+  --text-color: #f3f4f6;
+  --edge-color: #6366f1;
+}
+
+.workflow-light {
+  @apply bg-gray-50;
+  --bg-color: #f9fafb;
+  --text-color: #1f2937;
+  --edge-color: #6366f1;
+}
+
+/* Controls Styling */
+.controls-dark {
+  @apply bg-background-surface !important;
+  box-shadow: var(--neu-shadow-dark);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.controls-dark button {
+  @apply bg-background-surface text-text-primary border-border !important;
+  transition: all 0.2s ease;
+}
+
+.controls-dark button:hover {
+  @apply bg-background-tertiary text-accent-primary !important;
+  transform: translateY(-1px);
+}
+
+.controls-light {
+  @apply bg-white !important;
+  box-shadow: var(--neu-shadow-light);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.controls-light button {
+  @apply bg-white text-gray-700 border-gray-200 !important;
+  transition: all 0.2s ease;
+}
+
+.controls-light button:hover {
+  @apply bg-gray-50 text-accent-primary !important;
+  transform: translateY(-1px);
+}
+
+/* MiniMap Styling */
+.minimap-dark {
+  @apply bg-background-surface border border-border !important;
+  border-radius: 8px;
+  box-shadow: var(--neu-shadow-dark);
+  padding: 8px;
+}
+
+.minimap-dark .react-flow__minimap-mask {
+  @apply fill-background-tertiary !important;
+}
+
+.minimap-light {
+  @apply bg-white border border-gray-200 !important;
+  border-radius: 8px;
+  box-shadow: var(--neu-shadow-light);
+  padding: 8px;
+}
+
+.minimap-light .react-flow__minimap-mask {
+  @apply fill-gray-100 !important;
+}
+
+/* Custom Node Styling */
+.workflow-node {
+  width: auto;
+  max-width: 280px;
+  transition: all 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Neomorphic Shadow Variations */
+.shadow-neu-normal {
+  box-shadow: var(--neu-shadow-dark);
+}
+
+.dark .shadow-neu-normal {
+  box-shadow: var(--neu-shadow-dark);
+}
+
+.shadow-neu-light {
+  box-shadow: var(--neu-shadow-light);
+}
+
+.shadow-neu-inset-dark {
+  box-shadow: var(--neu-inset-dark);
+}
+
+.shadow-neu-inset-light {
+  box-shadow: var(--neu-inset-light);
+}
+
+/* Glassmorphic Elements */
+.bg-glass-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-dark);
+}
+
+.bg-glass-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-light);
+}
+
+/* Edge & Handle Styling */
+.react-flow__handle {
+  transition: all 0.2s ease;
+}
+
+.react-flow__handle:hover {
+  transform: scale(1.2);
+}
+
+.workflow-dark .react-flow__handle {
+  box-shadow: 0 0 5px rgba(99, 102, 241, 0.5);
+}
+
+.workflow-light .react-flow__handle {
+  box-shadow: 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+.workflow-dark .react-flow__edge path {
+  stroke: var(--edge-color);
+  filter: drop-shadow(0 0 3px rgba(99, 102, 241, 0.3));
+}
+
+.workflow-light .react-flow__edge path {
+  stroke: var(--edge-color);
+}
+
+/* Custom Connection Line */
+.connection-line {
+  stroke-width: 2px;
+  stroke-dasharray: 5 3;
+  animation: dash 1s linear infinite;
+}
+
+.stroke-accent-glow {
+  stroke: #6366f1;
+  filter: drop-shadow(0 0 3px rgba(99, 102, 241, 0.6));
+}
+
+.stroke-accent-primary {
+  stroke: #6366f1;
+}
+
+/* Custom Connection Particles */
+.connection-particles circle {
+  filter: drop-shadow(0 0 2px rgba(99, 102, 241, 0.6));
+}
+
+.fill-accent-glow {
+  fill: #6366f1;
+}
+
+.fill-accent-primary {
+  fill: #6366f1;
+}
+
+/* Animation Keyframes */
+@keyframes dash {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.3);
+  }
+}
+
+/* Animation Classes */
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse 2s infinite;
+}
+
+/* Agent Library Panel */
+.agent-library {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* Agent Card */
+.agent-card {
+  transition: all 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.agent-card:hover {
+  transform: translateY(-2px);
+}
+
+.dark .agent-card {
+  box-shadow: var(--neu-shadow-dark);
+}
+
+.dark .agent-card:hover {
+  box-shadow: var(--neu-shadow-dark), var(--accent-glow);
+}
+
+.agent-card {
+  box-shadow: var(--neu-shadow-light);
+}
+
+.agent-card:hover {
+  box-shadow: var(--neu-shadow-light), var(--accent-glow);
+}
+
+/* Search Input */
+.search-input {
+  transition: all 0.2s ease;
+}
+
+.dark .search-input:focus {
+  box-shadow: var(--neu-inset-dark), var(--accent-glow);
+}
+
+.search-input:focus {
+  box-shadow: var(--neu-inset-light), var(--accent-glow);
+}
+
+/* Agent Selection */
+.dark .agent-selected {
+  box-shadow: var(--neu-shadow-dark), var(--accent-glow);
+  border-color: #6366f1;
+}
+
+.agent-selected {
+  box-shadow: var(--neu-shadow-light), var(--accent-glow);
+  border-color: #6366f1;
+}
